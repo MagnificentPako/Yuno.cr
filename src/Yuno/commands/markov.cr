@@ -5,7 +5,7 @@ module Yuno
 
     File.open("/log.db","w") do |io|
         while line = io.gets
-          chain << (line.from_json)["content"]
+                chain << (Hash(String, String).from_json(line))["content"]
         end
     end
 
