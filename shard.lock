@@ -12,7 +12,3 @@ shards:
     github: gdotdesign/cr-dotenv
     commit: 341678090110cdb5436f75cc796c785ed392c4be
 
-  rethinkdb:
-    github: MagnificentPako/rethinkdb.cr
-    commit: 88953d6e41a757cf15c55e17e01e7e7b0d1e4aa5
-

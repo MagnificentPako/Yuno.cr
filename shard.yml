@@ -15,9 +15,6 @@ dependencies:
     github: z64/ctx
   discordcr:
     github: meew0/discordcr
-  rethinkdb:
-    github: MagnificentPako/rethinkdb.cr 
-
 
 crystal: 0.20.0
 
