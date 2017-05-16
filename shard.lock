@@ -1,0 +1,18 @@
+version: 1.0
+shards:
+  ctx:
+    github: z64/ctx
+    commit: bf8df99a3f5afc0861550ec5b6ff88aef8613241
+
+  discordcr:
+    github: meew0/discordcr
+    commit: 412590eb3f94f85151d800933f70ffa672d62504
+
+  dotenv:
+    github: gdotdesign/cr-dotenv
+    commit: 341678090110cdb5436f75cc796c785ed392c4be
+
+  rethinkdb:
+    github: CubosTecnologia/rethinkdb.cr
+    commit: 4c96383f66b3707368d5c64c3cda4bdc097b5555
+

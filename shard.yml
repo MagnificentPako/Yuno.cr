@@ -1,0 +1,24 @@
+name: Yuno
+version: 0.1.0
+
+authors:
+  - Paul <paul@niobium.me>
+
+targets:
+  Yuno:
+    main: src/Yuno.cr
+
+dependencies:
+  dotenv:
+    github: gdotdesign/cr-dotenv
+  ctx:
+    github: z64/ctx
+  discordcr:
+    github: meew0/discordcr
+  rethinkdb:
+    github: CubosTecnologia/rethinkdb.cr
+
+
+crystal: 0.20.0
+
+license: MIT

@@ -1,0 +1,3 @@
+module Yuno
+  VERSION = "0.1.0"
+end
