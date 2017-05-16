@@ -13,6 +13,6 @@ shards:
     commit: 341678090110cdb5436f75cc796c785ed392c4be
 
   rethinkdb:
-    github: CubosTecnologia/rethinkdb.cr
-    commit: 4c96383f66b3707368d5c64c3cda4bdc097b5555
+    github: MagnificentPako/rethinkdb.cr
+    commit: 88953d6e41a757cf15c55e17e01e7e7b0d1e4aa5
 

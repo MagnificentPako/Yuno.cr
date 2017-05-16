@@ -3,3 +3,5 @@
 /bin/
 /.shards/
 .env
+git-journal.bash-completion
+_git-journal
