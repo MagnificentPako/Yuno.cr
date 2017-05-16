@@ -9,7 +9,7 @@ module Yuno
         end
     end
 
-    BOT.message_create do |payload|
+    BOT.on_message_create do |payload|
       File.open("/log.db","a") do |io|
         io << ({"content" => payload.content}).to_json << "\n"
       end
