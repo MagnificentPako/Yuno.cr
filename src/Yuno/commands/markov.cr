@@ -17,9 +17,9 @@ module Yuno
 
   BOT.command("~~log", [SELF]) do |payload, args|
     begin
-              chain.generate
+      chain.generate
     rescue ex : Exception
-              ex.inspect_with_backtrace
+      ex.inspect_with_backtrace
     end
     BOT.create_message(payload.channel_id, chain.generate)
   end
