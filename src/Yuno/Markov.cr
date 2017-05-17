@@ -3,7 +3,9 @@ module Yuno
     START_TOKEN = "__start__"
     END_TOKEN   = "__end__"
 
-    @data = Hash(String, Hash(String, Int32)).new { Hash(String, Int32).new { 0 } }
+    @data = Hash(String, Hash(String, Int32)).new do |h, k|
+      h[k] = Hash(String, Int32).new { |h, k| h[k] = 0 }
+    end
 
     def initialize
     end
