@@ -1,7 +1,7 @@
 require "dotenv"
 Dotenv.load(".env")
-require "./Yuno/*"
 require "ctx"
+require "./Yuno/*"
 
 module Yuno
   Discord::LOGGER.level = Logger::WARN
