@@ -42,5 +42,13 @@ module Yuno
       end
       total.join " "
     end
+
+    def generate_n(length = 4)
+      gen = generate()
+      while gen.split.size < length
+        gen = generate()
+      end
+      gen
+    end
   end
 end

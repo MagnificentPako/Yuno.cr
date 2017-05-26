@@ -21,6 +21,6 @@ module Yuno
     rescue ex : Exception
       ex.inspect_with_backtrace
     end
-    BOT.create_message(payload.channel_id, chain.generate)
+    BOT.create_message(payload.channel_id, chain.generate_n)
   end
 end
