@@ -9,7 +9,7 @@ module Yuno
     client_id: 301679727540699136_u64)
   SELF = Ctx::Context.message_create { |m| m.author.id == 139395104455524352 }
   
-  Bot.on_ready do |payload|
+  BOT.on_ready do |payload|
     puts "================"
     puts "REEEEEEEEEEEEEEE"
     puts "================"
