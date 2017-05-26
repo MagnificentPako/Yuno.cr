@@ -1,5 +1,5 @@
 module Yuno
   BOT.command("~~ping", [SELF]) do |payload, args|
-    BOT.create_message(payload.channel_id, "Pong!")
+    BOT.edit_message(payload.channel_id, payload.id, "Pong!")
   end
 end
