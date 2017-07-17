@@ -3,7 +3,7 @@ require "json"
 module Yuno
 
   wave = {} of String => Array(String)
-  File.open("../wave.json", "r") do |io|
+  File.open("wave.json", "r") do |io|
     while line = io.gets
       wave = Hash(String, Array(String)).from_json(line) 
     end
