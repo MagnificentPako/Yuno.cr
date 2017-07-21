@@ -1,7 +1,7 @@
 module Yuno
   BOT.command("~~mutype", [SELF]) do |payload, arguments|
     io = IO::Memory.new
-    status = Process.run(command: "/home/paul/.cabal/bin/mueval", args: ["-iTe", arguments], input: IO::Memory.new(arguments), output: io)
+    status = Process.run(command: "mueval", args: ["-iTe", arguments], input: IO::Memory.new(arguments), output: io)
     em = Discord::Embed.new(
         title: "μtypes🌈",
         colour: status.exit_status == 0 ? 5025616_u32 : 16007990_u32,
