@@ -4,7 +4,7 @@ module Yuno
     status = Process.run(command: "urn --exec | stripcolorcodes", shell: true, input: IO::Memory.new(arguments), output: io)
     em = Discord::Embed.new(
         title: "Urn🔥",
-        colour: 5025616,
+        colour: 5025616_u32,
         fields: [
             Discord::EmbedField.new(
                 name: "Input:",
