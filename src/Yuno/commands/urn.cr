@@ -1,6 +1,6 @@
 module Yuno
   BOT.command("~~urn", [SELF]) do |payload, arguments|
-    proc = Process.run(command : String, input = IO::Memory.new(arguments), output = true)
+    proc = Process.run(command = "urn", args = "--exec", input = IO::Memory.new(arguments), output = true)
     output = proc.output_gets_to_end
     status = proc.await
     puts status
