@@ -16,6 +16,6 @@ module Yuno
             )
         ]
     )
-    BOT.edit_message(payload.channel_id, payload.id, "", em)
+    BOT.edit_message(payload.channel_id, payload.id, "", embed: em)
   end
 end
