@@ -2,7 +2,7 @@
 /lib/
 /bin/
 /.shards/
-./Yuno
+/Yuno/
 .env
 git-journal.bash-completion
 _git-journal
