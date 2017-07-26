@@ -30,12 +30,17 @@ RUN groupadd -r yuno && useradd --no-log-init -r -g yuno yuno
 RUN apt-get update
 RUN apt-get install -y luajit
 
+# Download stripcolorcodes
+RUN wget https://gist.githubusercontent.com/MagnificentPako/cb07a041b155e6212828a93929e2d1d0/raw/23e42091179ce3b3601a18930a7e8cfbfddf889b/stripcolorcodes -O /usr/bin/stripcolorcodes
+RUN chmod +x /usr/bin/stripcolorcodes
+
 # Copy urn into prod
 WORKDIR /urn
 COPY --from=compiler /urn/bin/urn.lua ./bin/urn.lua
 COPY --from=compiler /urn/lib ./lib
 RUN echo "#!/bin/bash\nluajit /urn/bin/urn.lua $@" > /usr/bin/urn
 RUN chmod +x /usr/bin/urn
+
 
 # Copy Yuno into prod
 WORKDIR /yuno

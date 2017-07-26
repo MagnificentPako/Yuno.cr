@@ -1,7 +1,7 @@
 module Yuno
   BOT.command("~~urn", [SELF]) do |payload, arguments|
     io = IO::Memory.new
-    status = Process.run(command: "/usr/bin/urn --exec | stripcolorcodes", shell: true, input: IO::Memory.new(arguments), output: io)
+    status = Process.run(command: "urn --exec | stripcolorcodes", shell: true, input: IO::Memory.new(arguments), output: io)
     em = Discord::Embed.new(
         title: "Urn🔥",
         colour: 5025616_u32,
