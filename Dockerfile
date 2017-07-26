@@ -51,6 +51,7 @@ RUN chmod +x /usr/bin/urn
 WORKDIR /yuno
 COPY --from=compiler /yuno/Yuno .
 COPY --from=compiler /yuno/wave.json .
+COPY --from=compiler /yuno/urn_std/ .
 
 # Chown everything as the new user
 RUN chown -R yuno:yuno .
