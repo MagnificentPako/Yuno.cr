@@ -6,6 +6,7 @@ env:
   - secure: q4mqKd+KRHbMJxS4L/dgmcBtvZhggXcjBusVCflTnQLurx+kKg7kTmsDlAD95ynXqvqnpteLXz8jpRgqFnL2aX0IUj23+NlshhUmT0dACk+/UgIoDY7Hbius33zmro71LfeO4EeWDacQfrtF2/QUj+QlsMtnL0DiPx0rkxzneBdIDuOuPP6DhY2StkXgJyRNKI2l6qsIF9SqvYNz5lpZes34yDbFP0q3qwrN6gYEQnNTPoHvs/8hVMMIRoctKj5tD67cbRWP0g9nPaY5Q4WwieKjM5SoSBVtLl6W6LkC5eMsKEh1C5RHPvj8hYC/uy5Bi+4fzWNbxQcy3OYhHNGgW0cIcDc7Kn43W92fXrkrvD0gTCgAOcHJxMAAt/on1dJn+Wace0MZIZRhCSjxyXTHeuu14aux+t8h5roL+NKq8noC8iOMzZfZ+bKT2QxvefVY7IR/e2cTaevgY8Q8Zis7qg7pbsFjPWbTl7PzbkffPqFYxmll4jdOrRqoPk5u+u/oWBJVvzx0jNnnc5yh4y10hpOM6qQa8VdJHvtFtyZeBsr8AMmfnT6fL4QaHTklL34h3+QRRPjrdua01+FpQiK+oVkLDAvvQFL6zUPrbdaERbq5Or9pxfsfnSropgHUW7frImygG3m8RawBVT2iUG+of7fN0ipv1chVPLVUaSfJLoE=
   - COMMIT=${TRAVIS_COMMIT::8}
 after_success:
+  - docker build -t magnificentpako/yuno .
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
   - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
   - docker build -f Dockerfile -t $REPO:$COMMIT .
