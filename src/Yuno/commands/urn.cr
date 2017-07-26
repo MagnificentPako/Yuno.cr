@@ -26,6 +26,6 @@ module Yuno
         colour: 5025616_u32,
         description: "Update finished!"
     )
-    BOT.edit_message(payload.channel_id, payload.id, "", embed: emb)
+    BOT.edit_message(payload.channel_id, payload.id, "", embed: em)
   end
 end
