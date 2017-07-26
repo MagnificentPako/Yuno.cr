@@ -22,6 +22,7 @@ RUN make
 
 # Fetch stripcolorcodes
 WORKDIR /misc
+RUN apt-get install -y wget
 RUN wget https://gist.githubusercontent.com/MagnificentPako/cb07a041b155e6212828a93929e2d1d0/raw/23e42091179ce3b3601a18930a7e8cfbfddf889b/stripcolorcodes
 
 # Start actual image
