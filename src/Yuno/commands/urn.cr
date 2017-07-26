@@ -24,7 +24,7 @@ module Yuno
     em = Discord::Embed.new(
         title: "Urn🔥",
         colour: 5025616_u32,
-        content: "Update finished!"
+        description: "Update finished!"
     )
     BOT.edit_message(payload.channel_id, payload.id, "", embed: emb)
   end
