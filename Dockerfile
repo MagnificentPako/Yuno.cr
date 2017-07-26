@@ -20,6 +20,10 @@ RUN apt-get install -y lua5.2
 RUN git clone https://gitlab.com/urn/urn.git .
 RUN make
 
+# Fetch stripcolorcodes
+WORKDIR /misc
+RUN wget https://gist.githubusercontent.com/MagnificentPako/cb07a041b155e6212828a93929e2d1d0/raw/23e42091179ce3b3601a18930a7e8cfbfddf889b/stripcolorcodes
+
 # Start actual image
 FROM phusion/baseimage:latest
 
@@ -30,8 +34,8 @@ RUN groupadd -r yuno && useradd --no-log-init -r -g yuno yuno
 RUN apt-get update
 RUN apt-get install -y luajit
 
-# Download stripcolorcodes
-RUN wget https://gist.githubusercontent.com/MagnificentPako/cb07a041b155e6212828a93929e2d1d0/raw/23e42091179ce3b3601a18930a7e8cfbfddf889b/stripcolorcodes -O /usr/bin/stripcolorcodes
+# Install stripcolorcodes
+COPY --from=compiler /misc/stripcolorcodes /usr/bin/stripcolorcodes
 RUN chmod +x /usr/bin/stripcolorcodes
 
 # Copy urn into prod
