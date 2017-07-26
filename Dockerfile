@@ -31,9 +31,10 @@ FROM phusion/baseimage:latest
 # Create non-root user
 RUN groupadd -r yuno && useradd --no-log-init -r -g yuno yuno
 
-# Download some stuff
+# Install luajit and mueval
 RUN apt-get update
 RUN apt-get install -y luajit
+RUN apt-get install -y mueval
 
 # Install stripcolorcodes
 COPY --from=compiler /misc/stripcolorcodes /usr/bin/stripcolorcodes
@@ -45,7 +46,6 @@ COPY --from=compiler /urn/bin/urn.lua ./bin/urn.lua
 COPY --from=compiler /urn/lib ./lib
 RUN echo "#!/bin/bash\nluajit /urn/bin/urn.lua $@" > /usr/bin/urn
 RUN chmod +x /usr/bin/urn
-
 
 # Copy Yuno into prod
 WORKDIR /yuno
