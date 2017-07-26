@@ -1,5 +1,5 @@
 require "dotenv"
-Dotenv.load(".env")
+Dotenv.load("conf/.env")
 require "ctx"
 require "./Yuno/*"
 

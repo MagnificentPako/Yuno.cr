@@ -2,25 +2,32 @@ require "json"
 
 module Yuno
   chain = Chain.new
+  exists = File.exists? "log.db"
 
-  File.open("log.db", "r") do |io|
-    while line = io.gets
-      chain << (Hash(String, String).from_json(line))["content"]
+  if exists
+    File.open("log.db", "r") do |io|
+      while line = io.gets
+        chain << (Hash(String, String).from_json(line))["content"]
+      end
     end
   end
 
   BOT.on_message_create do |payload|
-    File.open("log.db", "a") do |io|
-      io << ({"content" => payload.content}).to_json << "\n"
+    if exists
+      File.open("log.db", "a") do |io|
+        io << ({"content" => payload.content}).to_json << "\n"
+      end
     end
   end
 
   BOT.command("~~log", [SELF]) do |payload, args|
-    begin
-      chain.generate
-    rescue ex : Exception
-      ex.inspect_with_backtrace
+    if exists
+      begin
+        chain.generate
+      rescue ex : Exception
+        ex.inspect_with_backtrace
+      end
+      BOT.edit_message(payload.channel_id, payload.id, chain.generate_n)
     end
-    BOT.edit_message(payload.channel_id, payload.id, chain.generate_n)
   end
 end

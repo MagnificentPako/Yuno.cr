@@ -8,7 +8,11 @@ TODO: Write installation instructions here
 
 ## Usage
 
-TODO: Write usage instructions here
+You need to create a volume pointing to "/yuno/conf" inside the container where you place your .env file.
+The `.env` file should look like this:
+```
+TOKEN=your_token_here
+```
 
 ## Development
 
