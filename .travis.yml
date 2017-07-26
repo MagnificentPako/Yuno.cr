@@ -1,1 +1,15 @@
 language: crystal
+env:
+  global:
+  - secure: 5gPx3bbRJnZP7nkSa4rcChCpfSP2ZuR3rGLFNTKxLSG2sInQfmioTAR/VuzmnJsnEefoziE10RJWQVCRxd1JXs7GPg3TLdS2o9reMeSAcQsHqNqlwiGoaBAHa2/U8yJcGZSRMr60jrchYZtuChRV+A3i0BlPxDYVy2rWpsnKOFqj610F8V0wS4xT0n+Ii3PvdpRkG7BlkZv38MCGzUlPA3MM34F9pOZq/y0/wSctz+pvb5EdWl9JO/UIcY59GGlID07GNgp2s/ieIo/LtIQTO+5VlFzwMvvmB7Zr5+0Yrqthvpo356BKV5qlvmvaZ1KpcojExbEcFgtclUpxkmoO5FM3g29Yye7fc9PVmnEGm0fiHkde2x3URQ7qA9QMAWBAoWSW5fypz1JF68P2B2KWbGcrGULbPYZ7E35Q4Ah7gfpvBFxh+fFnudgD+4CvVD3WEFiYgD81A10Pa0xmGWIzTDZCbo9lVxVoBbvsnzUkS/pga9kZUIV3/eS/uF9nGWOk2+bU3LRWaVWZ1MR/eBV4IMCnGSFYeUfTh6SN8QlymTbNs+oGun6u7HMEuZrt4coGFCwnwu+AQ7xviJQZHC9kNYlLep6CZ1myHIbjGUC0sgWZdya8yxyi84E5xlEbbB79H95HIz8wSkUOEcy7sa5oAbKq5jb6kVzKLqbB5say+q8=
+  - secure: Q8UK/pR78jYbgNihIScfms4WGWr/tMt0SviAsHOTI1SO16jaTqHCw98ul1KntkfOArVMPRsSyjwZ+AQ/LfYy8zusTvdNLf16ULbwTs090M0wVvZzYsfxOHt7PWQcssBQ5FYmRL+LGRfnr8sKG+o6XDY+gUQi9AGyNCixXhFYAKXmahEG+PjUsUjtos6X4wXsCLRcvdaMJElSwyGZF5wePopxaC/boUWVICkcOMjoL3WZd/rvmxC0w82Q6ScF81iqOHGb7wkHvyfP9HY7TX9ulJVEvOcUplSbLe7zsBmqtpShV84R0g40K0lCivbNYNTsbnO7vkdRl9EkMfLpR3F2n4a5cg5dKS4597wy4sTCl37LddAGtDx+Aubv59tKkSEluULzc7ivgN8/8lPy5JO2YSZBN8XQJGEqn+k2Bj7Axbkqgr+DxN8XDtq1J8YY1EVW//QqOas2DZvesVITbc+HT9rXercV77pnEd9sU+lBp1+ZI1aW2K7ASNJm/S+YOSvbF4BHoV8gscwSp4FVQSL41EGLWd6Z3mFiIPOsNKY78ZNQSK2gk8jykMk/8duMD5ffwCEUm7H1Cxuk4R4yxvoAaKoda29Ye25UTko0r+w9pzObRa8UjkUOL8llnMmJssY7tPp2yyhbYvTPEo/XxV78xCjAT/vKKQJskTZNdEOy+as=
+  - secure: q4mqKd+KRHbMJxS4L/dgmcBtvZhggXcjBusVCflTnQLurx+kKg7kTmsDlAD95ynXqvqnpteLXz8jpRgqFnL2aX0IUj23+NlshhUmT0dACk+/UgIoDY7Hbius33zmro71LfeO4EeWDacQfrtF2/QUj+QlsMtnL0DiPx0rkxzneBdIDuOuPP6DhY2StkXgJyRNKI2l6qsIF9SqvYNz5lpZes34yDbFP0q3qwrN6gYEQnNTPoHvs/8hVMMIRoctKj5tD67cbRWP0g9nPaY5Q4WwieKjM5SoSBVtLl6W6LkC5eMsKEh1C5RHPvj8hYC/uy5Bi+4fzWNbxQcy3OYhHNGgW0cIcDc7Kn43W92fXrkrvD0gTCgAOcHJxMAAt/on1dJn+Wace0MZIZRhCSjxyXTHeuu14aux+t8h5roL+NKq8noC8iOMzZfZ+bKT2QxvefVY7IR/e2cTaevgY8Q8Zis7qg7pbsFjPWbTl7PzbkffPqFYxmll4jdOrRqoPk5u+u/oWBJVvzx0jNnnc5yh4y10hpOM6qQa8VdJHvtFtyZeBsr8AMmfnT6fL4QaHTklL34h3+QRRPjrdua01+FpQiK+oVkLDAvvQFL6zUPrbdaERbq5Or9pxfsfnSropgHUW7frImygG3m8RawBVT2iUG+of7fN0ipv1chVPLVUaSfJLoE=
+  - COMMIT=${TRAVIS_COMMIT::8}
+after_success:
+  - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+  - export REPO=magnificentpako/yuno
+  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
+  - docker build -f Dockerfile -t $REPO:$COMMIT .
+  - docker tag $REPO:$COMMIT $REPO:$TAG
+  - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
+  - docker push $REPO
