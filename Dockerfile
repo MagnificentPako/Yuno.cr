@@ -33,6 +33,7 @@ RUN groupadd -r yuno && useradd --no-log-init -r -g yuno yuno
 
 # Install luajit and mueval
 RUN apt-get update
+RUN apt-get install -y git
 RUN apt-get install -y luajit
 RUN apt-get install -y mueval
 
@@ -51,7 +52,7 @@ RUN chmod +x /usr/bin/urn
 WORKDIR /yuno
 COPY --from=compiler /yuno/Yuno .
 COPY --from=compiler /yuno/wave.json .
-COPY --from=compiler /yuno/urn_std/ .
+RUN git clone https://github.com/MagnificentPako/YunoUrnLibs.git ./urn_std
 
 # Chown everything as the new user
 RUN chown -R yuno:yuno .
