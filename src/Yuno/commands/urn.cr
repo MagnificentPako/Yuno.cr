@@ -18,9 +18,9 @@ module Yuno
     )
     BOT.edit_message(payload.channel_id, payload.id, "", embed: em)
   end
+  BOT.command("~~update-urn", [SELF]) do |payload, arguments|
   `rm -rf /yuno/urn_std`
   `git clone https://github.com/MagnificentPako/YunoUrnLibs.git /yuno/urn_std`
-  BOT.command("~~update-urn", [SELF]) do |payload, arguments|
     em = Discord::Embed.new(
         title: "Urn🔥",
         colour: 5025616_u32,
