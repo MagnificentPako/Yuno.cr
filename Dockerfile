@@ -52,7 +52,7 @@ RUN chmod +x /usr/bin/urn
 WORKDIR /yuno
 COPY --from=compiler /yuno/Yuno .
 COPY --from=compiler /yuno/wave.json .
-RUN git clone https://github.com/MagnificentPako/YunoUrnLibs.git ./urn_std
+RUN git clone https://github.com/MagnificentPako/YunoUrnLibs.git urn_std
 
 # Chown everything as the new user
 RUN chown -R yuno:yuno .
