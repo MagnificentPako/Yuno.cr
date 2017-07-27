@@ -15,6 +15,9 @@ dependencies:
     github: z64/ctx
   discordcr:
     github: meew0/discordcr
+  nuummite:
+    github: codesteak/nuummite
+    version: ~> 0.1.1
 
 crystal: 0.20.0
 

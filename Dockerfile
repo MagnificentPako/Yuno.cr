@@ -53,6 +53,8 @@ COPY --from=compiler /yuno/Yuno .
 COPY --from=compiler /yuno/wave.json .
 RUN git clone https://github.com/MagnificentPako/YunoUrnLibs.git urn_std
 
+# Add volume used for persistent storage
+VOLUME storage
 # Chown everything as the new user
 RUN chown -R yuno:yuno .
 
