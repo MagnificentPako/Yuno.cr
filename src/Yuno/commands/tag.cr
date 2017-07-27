@@ -1,7 +1,7 @@
 require "nuummite"
 
 module Yuno
-    db = Nuummite.new "tags", "storage/tags.db"
+    db = Nuummite.new "storage", "tags.db"
     db.auto_garbage_collect_after_writes = 50
 
     BOT.command("~~add-tag", [SELF]) do |payload, args|
