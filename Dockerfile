@@ -31,15 +31,14 @@ FROM phusion/baseimage:latest
 # Create non-root user
 RUN groupadd -r yuno && useradd --no-log-init -r -g yuno yuno
 
+# Set env var, needed for urn
+ENV TERM=dumb
+
 # Install luajit and mueval
 RUN apt-get update
 RUN apt-get install -y git
 RUN apt-get install -y luajit
 RUN apt-get install -y mueval
-
-# Install stripcolorcodes
-COPY --from=compiler /misc/stripcolorcodes /usr/bin/stripcolorcodes
-RUN chmod +x /usr/bin/stripcolorcodes
 
 # Copy urn into prod
 WORKDIR /urn
