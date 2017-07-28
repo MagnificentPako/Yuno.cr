@@ -18,4 +18,13 @@ module Yuno
     BOT.command("~~tag", [SELF]) do |payload, args|
         BOT.edit_message(payload.channel_id, payload.id, db[args])
     end
+
+    BOT.command("~~tags", [SELF]) do |payload, args|
+        output = "Available tags: "
+        db.each do |k,v|
+            output = output + k + ", "
+        end
+        output = output.rchop ", "
+        BOT.edit_message(payload.channel_id, payload.id, output)
+    end
 end
