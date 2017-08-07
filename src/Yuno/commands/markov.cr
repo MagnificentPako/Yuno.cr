@@ -20,7 +20,7 @@ module Yuno
         end
     end
 
-    BOT.command("~~log", [SELF]) do |payload, args|
+    BOT.command("λlog", [SELF]) do |payload, args|
         if exists
             begin
                 chain.generate

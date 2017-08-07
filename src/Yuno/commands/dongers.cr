@@ -8,19 +8,19 @@ module Yuno
         end
     end
 
-    BOT.command("~~wave", [SELF]) do |payload, args|
+    BOT.command("λwave", [SELF]) do |payload, args|
         BOT.edit_message(payload.channel_id, payload.id, wave.values.sample.sample)
     end
 
-    BOT.command("~~lenny", [SELF]) do |payload, args|
+    BOT.command("λlenny", [SELF]) do |payload, args|
         BOT.edit_message(payload.channel_id, payload.id, LENNY.sample)
     end
 
-    BOT.command("~~flip", [SELF]) do |payload, args|
+    BOT.command("λflip", [SELF]) do |payload, args|
         BOT.edit_message(payload.channel_id, payload.id, TABLE_FLIP.sample)
     end
 
-    BOT.command("~~unflip", [SELF]) do |payload, args|
+    BOT.command("λunflip", [SELF]) do |payload, args|
         BOT.edit_message(payload.channel_id, payload.id, TABLE_UNFLIP.sample)
     end
 end

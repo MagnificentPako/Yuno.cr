@@ -1,5 +1,5 @@
 module Yuno
-  BOT.command("~~mutype", [SELF]) do |payload, arguments|
+  BOT.command("λmutype", [SELF]) do |payload, arguments|
     io = IO::Memory.new
     status = Process.run(command: "mueval", args: ["-iTe", arguments], input: IO::Memory.new(arguments), output: io)
     em = Discord::Embed.new(

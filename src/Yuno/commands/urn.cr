@@ -1,5 +1,5 @@
 module Yuno
-  BOT.command("~~urn", [SELF]) do |payload, arguments|
+  BOT.command("λurn", [SELF]) do |payload, arguments|
     io = IO::Memory.new
     status = Process.run(command: "luajit", args: ["/urn/bin/urn.lua","-i", "/yuno/urn_std", "--exec"], shell: true, input: IO::Memory.new("(import yuno ())\n" + arguments), output: io)
     em = Discord::Embed.new(
