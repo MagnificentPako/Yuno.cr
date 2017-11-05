@@ -8,7 +8,7 @@ WORKDIR /yuno
 COPY ./ .
 
 # Downloads dependencies
-RUN crystal deps update
+RUN crystal deps install
 
 # Compile
 RUN crystal build src/Yuno.cr
