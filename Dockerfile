@@ -38,7 +38,9 @@ ENV TERM=dumb
 RUN apt-get update
 RUN apt-get install -y git
 RUN apt-get install -y luajit
-RUN apt-get install -y mueval
+RUN apt-get install -y ghc cabal-instaa
+RUN cabal update
+RUN cabal install mueval
 
 # Copy urn into prod
 WORKDIR /urn
