@@ -16,8 +16,9 @@ before_install:
   - sudo apt-get -y install docker-ce
     
 after_success:
-  - docker build -t magnificentpako/yuno .
+  #- docker build -t magnificentpako/yuno .
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
+  - docker build -t magnificentpako/yuno:latest .
   #- export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo "latest" ; fi`
   #- docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
-  - docker push magnificentpako/yuno
+  - docker push magnificentpako/yuno:latest
