@@ -38,7 +38,7 @@ ENV TERM=dumb
 RUN apt-get update
 RUN apt-get install -y git
 RUN apt-get install -y luajit
-RUN apt-get install -y ghc cabal-instaa
+RUN apt-get install -y ghc cabal-instal
 RUN cabal update
 RUN cabal install mueval
 
